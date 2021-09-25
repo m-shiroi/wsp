@@ -1,4 +1,4 @@
-#! /bin/env bash
+#! /bin/bash
 
 declare -r REMOTE="remote"
 declare -r SYNC_PROFILE="${HOME}/.profile"

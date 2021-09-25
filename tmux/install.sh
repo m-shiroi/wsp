@@ -1,4 +1,4 @@
-#! /bin/env bash
+#! /bin/bash
 
 declare -r REMOTE="remote"
 declare -r SYNC_FILE="${HOME}/.tmux.conf"
