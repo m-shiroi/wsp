@@ -1,0 +1,75 @@
+#! /bin/env bash
+
+n(){
+	export NNN_ACTIVE=${PWD##*/}
+	export EDITOR="vimx"
+	export PAGER='less -Ri'
+	export NNN_COLORS='#5251d0be;2341'
+    	export NNN_BMS='t:/mnt/data/temp;h:~;c:/mnt/data/Resources/Courses;o:/mnt/data/Notes/obsidian/main;b:/mnt/data/Resources/Books;e:/mnt/data'
+	echo ${EDITOR} ${VISUAL}
+	nnn -cdEFnQrux
+	unset NNN_ACTIVE
+}
+
+nnn_env(){
+	[ -z ${NNN_ACTIVE} ] || echo -e "\e[1;33m[${NNN_ACTIVE}]"
+}
+
+conda_env(){
+	[ -z ${CONDA_DEFAULT_ENV} ] || echo -e "\e[1;33m<${CONDA_DEFAULT_ENV}>"
+}
+
+git_env(){
+	GIT_PS1_SHOWUNTRACKEDFILES="+"
+	__git_ps1 "<%s>"
+}
+
+tcd(){
+	local cur=$(tmux list-panes | grep '(active)')
+	cur=${cur:0:1}
+	while read line;do
+		local ind=${line:0:1}
+		tmux select-pane -t ${ind}
+		tmux send-keys "cd $(pwd)" Enter
+		tmux send-keys "clear" Enter
+	done < <(tmux list-panes)
+	tmux select-pane -t ${cur}
+}
+
+__tmux_init(){
+	tmux new-session -d -s 'mn' -n 'stats' 
+	tmux split-window -h
+	tmux split-window -v
+	tmux select-pane -t 1
+	tmux split-window -v
+	tmux select-pane -t 3
+	tmux send-keys "htop" Enter
+	tmux select-pane -t 1
+	tmux send-keys "n" Enter
+	tmux new-window -n 'main'
+	tmux split-window -h
+	tmux split-window -v
+	tmux new-window -n 'remote'
+	tmux new-window -n 'local'
+	tmux select-window -t 'main'
+	tmux select-pane -t 2
+	tmux detach-client
+}
+
+tmn(){
+	[ -z "$(tmux ls | grep 'mn')" ] && __tmux_init
+	tmux a -t mn
+}
+
+# Generic aliases
+alias x='exit'
+alias v='vimx'
+alias update='source ~/.bashrc'
+alias bashrc='v ~/.bashrc'
+alias vimrc='v ~/.vimrc'
+alias profilerc='v ~/.profile'
+alias tmuxrc='v ~/.tmux.conf'
+
+# Pompt
+source /home/makkusu/git-prompt
+export PS1=$'$(nnn_env)$(conda_env)\e[1;32m\u\e[1;34m@\H\e[1;39m::\e[1;35m\W\e[1;33m$(git_env)\n$\[\e[m\] '
