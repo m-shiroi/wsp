@@ -1,0 +1,40 @@
+[global_config]
+  window_state = maximise
+  borderless = True
+  extra_styling = False
+  sticky = True
+  inactive_color_offset = 0.6096774193548387
+  title_use_system_font = False
+  title_font = JetBrains Mono NL 9
+[keybindings]
+  previous_profile = <Alt>b
+[profiles]
+  [[default]]
+    background_darkness = 0.75
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = JetBrains Mono NL 9
+    show_titlebar = False
+    scrollbar_position = hidden
+    scroll_on_keystroke = False
+    exit_action = restart
+    palette = "#555555:#fa2573:#98e123:#dfd460:#1080d0:#8700ff:#43a8d0:#bbbbbb:#c5bebe:#f6669d:#b1e05f:#fff26d:#00afff:#af87ff:#51ceff:#ffffff"
+    use_system_font = False
+  [[default_s]]
+    cursor_color = "#aaaaaa"
+    font = JetBrains Mono NL 9
+    show_titlebar = False
+    scrollbar_position = hidden
+    scroll_on_keystroke = False
+    exit_action = restart
+    palette = "#555555:#fa2573:#98e123:#dfd460:#1080d0:#8700ff:#43a8d0:#bbbbbb:#c5bebe:#f6669d:#b1e05f:#fff26d:#00afff:#af87ff:#51ceff:#ffffff"
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
