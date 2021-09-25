@@ -11,6 +11,7 @@ set colorcolumn=80
 
 " Settings 
 set nocompatible
+set autowriteall
 set autoindent
 set ignorecase smartcase
 set nobackup
