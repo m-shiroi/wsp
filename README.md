@@ -1,1 +1,2 @@
-# wsp
+# Workspace
+| Some dotfiles etc...
