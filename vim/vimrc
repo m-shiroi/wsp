@@ -1,0 +1,60 @@
+" Ukrainian language mappings
+set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ї],фa,іs,вd,аf,пg,рh,оj,лk,дl,ж\\;,є',ґ\\,яz,чx,сc,мv,иb,тn,ьm,ю.,./,ЙQ,ЦW,УE,КR,ЕT,НY,НY,ГU,ШI,ЩO,ЗP,Х{,Ї},ФA,ІS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж\\:,Є\\",Ґ<bar>,ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б\\<,Ю>,№#
+
+" Colorscheme
+colorscheme minimalist
+colorscheme molokai_dark
+
+" Cursor
+set cursorline
+set colorcolumn=80
+
+" Settings 
+set nocompatible
+set autoindent
+set ignorecase smartcase
+set nobackup
+set noswapfile
+set laststatus=2
+set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)
+set encoding=utf-8
+syntax on
+filetype indent on
+filetype plugin on
+
+" Numbers
+set number
+augroup toggle_relative_numer
+autocmd InsertEnter * :setlocal norelativenumber
+autocmd InsertLeave * :setlocal relativenumber
+
+" Search down inot subfolders
+" Provides tab-completion for all file-related tasks
+set path+=**
+
+" Display all matching files when we tab complete
+set wildmenu
+
+" Create the 'tags' file (may need to install ctags first)
+command! MakeTags !ctags -R --exclude=.git .
+
+" Tweaks for browsing
+let g:netrw_banner=0		"disable annoying banner
+let g:netrw_browse_split=4	"open in prior window
+let g:netrw_altv=1		"open splits to the rigt
+let g:netrw_liststyle=3		"tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide=',\(&\|\s\s)\zs\.\S\+'
+
+" Other
+set history=500
+set clipboard=unnamedplus 							" Is supported by neovim but in Xorg needs vimx
+set wildignore+=*.o,*.obj,*.bin,*.dll,*.exe
+set wildignore+=*/.git/*,*/.svn/*,*/__pycache__/*,*/build/**
+set wildignore+=*.pyc
+set wildignore+=*.DS_Store
+set wildignore+=*.aux,*.bbl,*.blg,*.brf,*.fls,*.fdb_latexmk,*.synctex.gz,*.pdf
+set completeopt+=menuone  " Show menu even if there is only one item
+set completeopt-=preview  " Disable the preview window
+set complete+=k,kspell complete-=w complete-=b complete-=u complete-=t
+set tags=tags,k_tags
