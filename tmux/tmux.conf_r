@@ -1,0 +1,45 @@
+set  -g base-index 1
+setw -g pane-base-index 1
+setw -g mode-keys vi
+
+######################
+### DESIGN CHANGES ###
+######################
+
+# Loud or quiet?
+set -g visual-activity off
+set -g visual-bell off
+set -g visual-silence off
+setw -g monitor-activity off
+set -g bell-action none
+
+# Modes (copy)
+setw -g clock-mode-colour colour2
+setw -g mode-style 'fg=colour198 bold'
+
+# Panes
+set -g pane-border-style 'fg=colour233 bold'
+set -g pane-active-border-style 'fg=colour208 bold'
+
+# Statusbar
+set -g status-position bottom
+set -g status-justify left
+set -g status-style 'bg=colour233 fg=colour255 bold'
+set -g status-left '#[fg=colour2,bg=colour236 bold] #S '
+set -g status-right '#[fg=colour255,bg=colour233 bold] %d/%m #[fg=colour198,bg=colour236 bold] %H:%M:%S '
+set -g status-right-length 50
+set -g status-left-length 20
+
+# Active window
+setw -g window-status-current-style 'fg=colour208 bg=colour236 bold'
+setw -g window-status-current-format ' #W '
+
+# Other windows
+setw -g window-status-style 'fg=colour255 bg=colour233'
+setw -g window-status-format ' #W '
+
+setw -g window-status-bell-style 'fg=colour198 bg=colour233 bold'
+
+# Messages
+set -g message-style 'fg=colour255 bg=colour233 bold'
+set -g history-limit 10000
