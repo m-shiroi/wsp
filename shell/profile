@@ -2,7 +2,6 @@
 
 n(){
 	export NNN_ACTIVE=${PWD##*/}
-	export EDITOR="vimx"
 	export PAGER='less -Ri'
 	export NNN_COLORS='#5251d0be;2341'
     	export NNN_BMS='t:/mnt/data/temp;h:~;c:/mnt/data/Resources/Courses;o:/mnt/data/Notes/obsidian/main;b:/mnt/data/Resources/Books;e:/mnt/data'
@@ -62,8 +61,16 @@ tmn(){
 }
 
 # Generic aliases
+if [ -e '/bin/vimx' ]; then
+	export EDITOR='vimx'
+	export VISUAL='vimx'
+	alias v='vimx'
+else
+	export EDITOR='vim'
+	export VISUAL='vim'
+	alias v='vim'
+fi
 alias x='exit'
-alias v='vimx'
 alias update='source ~/.bashrc'
 alias bashrc='v ~/.bashrc'
 alias vimrc='v ~/.vimrc'
